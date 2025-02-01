@@ -1,0 +1,22 @@
+Package: QuantileGH
+Type: Package
+Title: Quantile Least Mahalanobis Distance Estimator for Tukey g-&-h
+        Mixture
+Version: 0.1.8
+Date: 2025-01-31
+Description: Functions for simulation, estimation, and model selection of
+        finite mixtures of Tukey g-and-h distributions.
+License: GPL-2
+Imports: methods, mixtools, tclust, fmx, TukeyGH77
+Encoding: UTF-8
+Authors@R: c(person(given = "Tingting", family = "Zhan", role = c("aut",
+        "cre", "cph"), email = c("Tingting.Zhan@jefferson.edu"), comment
+        = c(ORCID = '0000-0001-9971-4844')), person(given = "Inna",
+        family = "Chervoneva", role = c("ctb", 'cph'), email =
+        "Inna.Chervoneva@jefferson.edu", comment = c(ORCID =
+        '0000-0002-9104-4505')))
+Language: en-US
+Roxygen: list(markdown = TRUE)
+Depends: R (>= 4.4.0)
+Suggests: knitr, rmarkdown, mixsmsn
+RoxygenNote: 7.3.2
