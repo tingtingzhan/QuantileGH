@@ -1,3 +1,5 @@
+# QuantileGH 0.1.8
+Citation added.  doi:10.1007/s11222-025-10596-9
 # QuantileGH 0.1.7
 Release for R 4.4.0
 # QuantileGH 0.1.5
