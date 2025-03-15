@@ -12,18 +12,18 @@ fmx_hybrid(x, test = c("logLik", "CvM", "KS"), ...)
 \item{test}{\link[base]{character} scalar, criteria for selecting the optimal estimates.
 See \strong{Details}.}
 
-\item{...}{additional parameters of functions \link{fmx_normix} and \link{fmx_cluster}}
+\item{...}{additional parameters of functions \code{\link[=fmx_normix]{fmx_normix()}} and \code{\link[=fmx_cluster]{fmx_cluster()}}}
 }
 \value{
-Function \link{fmx_hybrid} returns an \linkS4class{fmx} object.
+Function \code{\link[=fmx_hybrid]{fmx_hybrid()}} returns an \linkS4class{fmx} object.
 }
 \description{
 Best estimates for finite mixture distribution \linkS4class{fmx}.
 }
 \details{
-Function \link{fmx_hybrid} compares
-Tukey \eqn{g}-&-\eqn{h} mixture estimate provided by function \link{fmx_cluster}
-and the normal mixture estimate by function \link{fmx_normix},
+Function \code{\link[=fmx_hybrid]{fmx_hybrid()}} compares
+Tukey \eqn{g}-&-\eqn{h} mixture estimate provided by function \code{\link[=fmx_cluster]{fmx_cluster()}}
+and the normal mixture estimate by function \code{\link[=fmx_normix]{fmx_normix()}},
 and select the one either with maximum likelihood (\code{test = 'logLik'}, default),
 with minimum Cramer-von Mises distance (\code{test = 'CvM'}) or
 with minimum Kolmogorov distance (\link{Kolmogorov_fmx}).

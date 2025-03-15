@@ -22,7 +22,7 @@ trimmed \eqn{k}-means algorithm \link[tclust]{tkmeans}}
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \link{fmx_normix} returns an \linkS4class{fmx} object.
+Function \code{\link[=fmx_normix]{fmx_normix()}} returns an \linkS4class{fmx} object.
 }
 \description{
 Naive parameter estimates for finite mixture distribution \linkS4class{fmx} using mixture of normal distributions.

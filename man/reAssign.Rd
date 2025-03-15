@@ -15,7 +15,7 @@ reAssign(x, ...)
 \item{...}{potential parameters, currently not in use.}
 }
 \value{
-Function \link{reAssign.tkmeans} returns an \code{'reAssign_tkmeans'} object,
+Function \code{\link[=reAssign.tkmeans]{reAssign.tkmeans()}} returns an \code{'reAssign_tkmeans'} object,
 which inherits from \link[tclust]{tkmeans} class.
 }
 \description{

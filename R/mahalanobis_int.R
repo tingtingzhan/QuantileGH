@@ -22,7 +22,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [mahalanobis_int] returns a \link[base]{numeric} scalar.
+#' Function [mahalanobis_int()] returns a \link[base]{numeric} scalar.
 #' 
 #' @keywords internal
 #' @export

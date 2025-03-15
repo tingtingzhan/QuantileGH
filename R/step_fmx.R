@@ -34,7 +34,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [step_fmx] returns an object of S3 class `'step_fmx'`, 
+#' Function [step_fmx()] returns an object of S3 class `'step_fmx'`, 
 #' which is a \link[base]{list} of selected models (in reversed order) with attribute(s)
 #' `'direction'` and
 #' `'test'`.

@@ -13,22 +13,24 @@ duplicated_allequal(x, ...)
 \arguments{
 \item{x}{\link[base]{double} \link[base]{vector}}
 
-\item{...}{additional parameters of function \link{outer_allequal}}
+\item{...}{additional parameters of function \code{\link[=allequal_o_]{allequal_o_()}}}
 }
 \value{
-Function \link{duplicated_allequal} returns a \link[base]{logical} \link[base]{vector} of the same length as the input vector,
+Function \code{\link[=duplicated_allequal]{duplicated_allequal()}} returns a \link[base]{logical} \link[base]{vector} of the same length as the input vector,
 indicating whether each element is nearly-equal to any of the previous elements.
 
-Function \link{unique_allequal} returns the non-nearly-equal elements in the input vector.
+Function \code{\link[=unique_allequal]{unique_allequal()}} returns the non-nearly-equal elements in the input vector.
 }
 \description{
 Determine nearly-equal elements and extract non-nearly-equal elements in a \link[base]{double} \link[base]{vector}.
 }
 \examples{
-x = c(.3, 1-.7, 0, .Machine$double.eps)
+(x = c(.3, 1-.7, 0, .Machine$double.eps))
+duplicated.default(x) # not desired
 unique.default(x) # not desired
-unique_allequal(x) # desired
-
+duplicated_allequal(x)
+unique_allequal(x)
+unique_allequal(x, tol = .Machine$double.eps/2)
 }
 \seealso{
 \link[base]{duplicated.default} \link[base]{unique.default}

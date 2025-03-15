@@ -24,7 +24,7 @@ Bayesian information criterion \link[stats]{BIC}-like (default).}
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \link{step_fmx} returns an object of S3 class \code{'step_fmx'},
+Function \code{\link[=step_fmx]{step_fmx()}} returns an object of S3 class \code{'step_fmx'},
 which is a \link[base]{list} of selected models (in reversed order) with attribute(s)
 \code{'direction'} and
 \code{'test'}.

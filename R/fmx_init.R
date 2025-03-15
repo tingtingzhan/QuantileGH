@@ -18,7 +18,7 @@
 #' @param ... additional parameters, currently not in use
 #' 
 #' @returns
-#' Function [klist] returns a \link[base]{list} of \link[base]{numeric} \link[base]{vector}s.
+#' Function [klist()] returns a \link[base]{list} of \link[base]{numeric} \link[base]{vector}s.
 #' 
 #' @seealso [reAssign.tkmeans]
 #' \link[stats]{kmeans} 
@@ -54,7 +54,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, 
 #' parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
-#' See function [fmx_constraint] for details.
+#' See function [fmx_constraint()] for details.
 #' 
 #' @param ... additional parameters, currently not in use
 #' 
@@ -71,7 +71,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' \item{\link[TukeyGH77]{letterValue}-based estimates of Tukey \eqn{g}-&-\eqn{h} distribution (Hoaglin, 2006)
 #' are calculated, for any \eqn{K\geq 1}, serving as the starting values for 
 #' QLMD algorithm.   
-#' These estimates are provided by function [fmx_cluster].}
+#' These estimates are provided by function [fmx_cluster()].}
 #' 
 #' \item{the \link[stats]{median} and \link[stats]{mad} will serve as 
 #' the starting values for \eqn{\mu} and \eqn{\sigma} 
@@ -82,7 +82,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @returns 
 #' 
-#' Function [fmx_cluster] returns an \linkS4class{fmx} object.
+#' Function [fmx_cluster()] returns an \linkS4class{fmx} object.
 #' 
 #' @importFrom methods new
 #' @importFrom fmx user_constraint
@@ -158,7 +158,7 @@ fmx_cluster <- function(
 #' 
 #' @returns 
 #' 
-#' Function [fmx_normix] returns an \linkS4class{fmx} object.
+#' Function [fmx_normix()] returns an \linkS4class{fmx} object.
 #' 
 # @importFrom fmx sort.mixEM logLik.mixEM
 #' @importFrom methods new
@@ -226,20 +226,20 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' @param test \link[base]{character} scalar, criteria for selecting the optimal estimates.  
 #' See **Details**.
 #' 
-#' @param ... additional parameters of functions [fmx_normix] and [fmx_cluster]
+#' @param ... additional parameters of functions [fmx_normix()] and [fmx_cluster()]
 #' 
 #' @details
 #' 
-#' Function [fmx_hybrid] compares 
-#' Tukey \eqn{g}-&-\eqn{h} mixture estimate provided by function [fmx_cluster]
-#' and the normal mixture estimate by function [fmx_normix], 
+#' Function [fmx_hybrid()] compares 
+#' Tukey \eqn{g}-&-\eqn{h} mixture estimate provided by function [fmx_cluster()]
+#' and the normal mixture estimate by function [fmx_normix()], 
 #' and select the one either with maximum likelihood (\code{test = 'logLik'}, default), 
 #' with minimum Cramer-von Mises distance (\code{test = 'CvM'}) or 
 #' with minimum Kolmogorov distance ([Kolmogorov_fmx]).
 #' 
 #' @returns 
 #' 
-#' Function [fmx_hybrid] returns an \linkS4class{fmx} object.
+#' Function [fmx_hybrid()] returns an \linkS4class{fmx} object.
 #' 
 #' @examples 
 #' library(fmx)

@@ -27,21 +27,21 @@ QLMDe(
 \item{data.name}{\link[base]{character} scalar, name for the observations for user-friendly print out.}
 
 \item{constraint}{\link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.
-See function \link{fmx_constraint} for details.}
+See function \code{\link[=fmx_constraint]{fmx_constraint()}} for details.}
 
 \item{probs}{\link[base]{numeric} \link[base]{vector}, percentiles at where the sample and theoretical quantiles are to be matched.
-See function \link{QLMDp} for details.}
+See function \code{\link[=QLMDp]{QLMDp()}} for details.}
 
 \item{init}{\link[base]{character} scalar for the method of initial values selection,
 or an \linkS4class{fmx} object of the initial values.
-See function \link{fmx_hybrid} for more details.}
+See function \code{\link[=fmx_hybrid]{fmx_hybrid()}} for more details.}
 
 \item{tol, maxiter}{see function \link[TukeyGH77]{vuniroot2}}
 
 \item{...}{additional parameters of \link[stats]{optim}}
 }
 \value{
-Function \link{QLMDe} returns an \linkS4class{fmx} object.
+Function \code{\link[=QLMDe]{QLMDe()}} returns an \linkS4class{fmx} object.
 }
 \description{
 The quantile least Mahalanobis distance algorithm estimates the parameters of

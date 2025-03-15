@@ -23,7 +23,7 @@
 #' 
 #' @details
 #' 
-#' The default arguments of function [QLMDp] returns the probabilities of 
+#' The default arguments of function [QLMDp()] returns the probabilities of 
 #' `c(.005, .01, .02, .03, seq.int(.05, .95, length.out = 15L), .97, .98, .99, .995)`.
 #' 
 #' @returns 

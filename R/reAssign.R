@@ -19,7 +19,7 @@
 #' Each trimmed observation is assigned to the closest cluster (i.e., with the smallest Mahalanobis distance). 
 #'
 #' @returns 
-#' Function [reAssign.tkmeans] returns an `'reAssign_tkmeans'` object, 
+#' Function [reAssign.tkmeans()] returns an `'reAssign_tkmeans'` object, 
 #' which inherits from \link[tclust]{tkmeans} class. 
 #' 
 #' @note 

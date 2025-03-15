@@ -40,7 +40,7 @@ must be equal or larger than the number of parameters in the distribution model 
 A vector of probabilities to be used in Quantile Least Mahalanobis Distance estimation (\link{QLMDe}).
 }
 \details{
-The default arguments of function \link{QLMDp} returns the probabilities of
+The default arguments of function \code{\link[=QLMDp]{QLMDp()}} returns the probabilities of
 \code{c(.005, .01, .02, .03, seq.int(.05, .95, length.out = 15L), .97, .98, .99, .995)}.
 }
 \examples{

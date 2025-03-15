@@ -12,9 +12,9 @@
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
 #' @param distname,data.name \link[base]{character} scalars, 
-#' see parameters of the same names in function [QLMDe]
+#' see parameters of the same names in function [QLMDe()]
 #' 
-#' @param direction \link[base]{character} scalar, direct of selection in function [step_fmx], 
+#' @param direction \link[base]{character} scalar, direct of selection in function [step_fmx()], 
 #' either `'forward'` (default) or `'backward'`
 #' 
 #' @param test \link[base]{character} scalar, criterion to be used, either 
@@ -28,10 +28,10 @@
 #' 
 #' @details 
 #' 
-#' Function [QLMDe_stepK] compares the \eqn{gh}-parsimonious models with different number of components \eqn{K},
+#' Function [QLMDe_stepK()] compares the \eqn{gh}-parsimonious models with different number of components \eqn{K},
 #' and selects the optimal number of components using BIC (default) or AIC.
 #' 
-#' The forward selection starts with finding the \eqn{gh}-parsimonious model (via function [step_fmx])
+#' The forward selection starts with finding the \eqn{gh}-parsimonious model (via function [step_fmx()])
 #' at \eqn{K = 1}.   
 #' Let the current number of component be \eqn{K^c}.  
 #' We compare the \eqn{gh}-parsimonious models of \eqn{K^c+1} and \eqn{K^c} component, respectively,
@@ -45,7 +45,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [QLMDe_stepK] returns an object of S3 class `'stepK'`, 
+#' Function [QLMDe_stepK()] returns an object of S3 class `'stepK'`, 
 #' which is a \link[base]{list} of selected models (in reversed order) with attribute(s)
 #' `'direction'` and
 #' `'test'`.

@@ -11,20 +11,22 @@
 #' 
 #' @param x \link[base]{double} \link[base]{vector}
 #' 
-#' @param ... additional parameters of function [outer_allequal]
+#' @param ... additional parameters of function [allequal_o_()]
 #' 
 #' @returns 
 #' 
-#' Function [duplicated_allequal] returns a \link[base]{logical} \link[base]{vector} of the same length as the input vector,
+#' Function [duplicated_allequal()] returns a \link[base]{logical} \link[base]{vector} of the same length as the input vector,
 #' indicating whether each element is nearly-equal to any of the previous elements.  
 #' 
-#' Function [unique_allequal] returns the non-nearly-equal elements in the input vector.
+#' Function [unique_allequal()] returns the non-nearly-equal elements in the input vector.
 #' 
 #' @examples 
-#' x = c(.3, 1-.7, 0, .Machine$double.eps)
+#' (x = c(.3, 1-.7, 0, .Machine$double.eps))
+#' duplicated.default(x) # not desired
 #' unique.default(x) # not desired
-#' unique_allequal(x) # desired
-#' 
+#' duplicated_allequal(x)
+#' unique_allequal(x)
+#' unique_allequal(x, tol = .Machine$double.eps/2)
 #' @seealso \link[base]{duplicated.default} \link[base]{unique.default}
 #' @name allequal
 #' @keywords internal
@@ -38,12 +40,10 @@ duplicated_allequal <- function(x, ...) {
   x <- unclass(x)
   if (!is.vector(x, mode = 'double')) stop('input must be double vector')
   nx <- length(x)
-  id <- outer_allequal(target = x, current = x, ...)
-  id[upper.tri(id, diag = TRUE)] <- FALSE # super smart!
-  return(.rowSums(id, m = nx, n = nx, na.rm = FALSE) > 0) # takes care of 1st element too 
+  id <- allequal_o_(target = x, current = x, ...)
+  id[lower.tri(id, diag = TRUE)] <- FALSE # super smart!
+  return(.colSums(id, m = nx, n = nx, na.rm = FALSE) > 0) # takes care of 1st element too 
 }
-
-
 
 
 
@@ -67,39 +67,38 @@ duplicated_allequal <- function(x, ...) {
 #' 
 #' @details 
 #' 
-#' Function [outer_allequal] is different from \link[base]{all.equal.numeric}, such that 
+#' Function [allequal_o_()] is different from \link[base]{all.equal.numeric}, such that 
 #' \itemize{
 #' \item{only compares between \link[base]{double}, not \link[base]{complex}, values}
-#' \item{element-wise comparison is performed}
+#' \item{element-wise comparison is performed, in a fashion similar to function \link[base]{outer}}
 #' \item{a \link[base]{logical} scalar is always returned for each element-wise comparison.}
 #' }
 #' 
 #' @returns 
-#' 
-#' Function [outer_allequal] returns an \eqn{n_c\times n_t} \link[base]{logical} \link[base]{matrix}
+#' Function [allequal_o_()] returns an \eqn{n_t\times n_c} \link[base]{logical} \link[base]{matrix}
 #' indicating whether the length-\eqn{n_c} \link[base]{vector} `current` 
 #' is element-wise near-equal to 
 #' the length-\eqn{n_t} \link[base]{vector} `target` 
 #' within the pre-specified `tolerance`.  
 #' 
-#' @seealso 
-#' \link[base]{outer}
-#' 
 #' @examples 
-#' x = c(.3, 1-.7, 0, .Machine$double.eps)
-#' outer_allequal(current = x, target = c(.3, 0))
-#' 
+#' allequal_o_(target = c(.3, 0), current = c(.3, 1-.7, 0, .Machine$double.eps))
 #' @keywords internal
 #' @export
-outer_allequal <- function(target, current, tolerance = sqrt(.Machine$double.eps), ...) {
-  if (!(nt <- length(target)) || !is.double(target)) stop('len-0 `target`')
-  if (!(nc <- length(current)) || !is.double(current)) stop('len-0 `current`')
+allequal_o_ <- function(target, current, tolerance = sqrt(.Machine$double.eps), ...) {
+  if (!(nt <- length(target)) || !is.double(target)) stop('illegal `target`')
+  if (!(nc <- length(current)) || !is.double(current)) stop('illegal `current`')
   if (anyNA(target) || anyNA(current)) stop('Do not allow missingness in `target` or `current`')
   
-  mc <- array(current, dim = c(nc, nt))
-  mt <- t.default(array(target, dim = c(nt, nc)))
-  xy <- abs(mt - mc) # 'absolute'
-  xn <- abs(mt)
+  t. <- rep(target, times = nc) # `target` on row
+  c. <- rep(current, each = nt) # `current` on col
+  # all.equal.numeric(target = t., current = c., ...) # nah, cannot do this..
+  
+  # object names inspired by ?base::all.equal.numeric
+  xy <- abs(t. - c.) # 'absolute'
+  xn <- abs(t.)
   if (all(is.finite(xn)) && all(xn > tolerance)) xy <- xy/xn # 'relative'
-  return(xy <= tolerance)
+  ret <- (xy <= tolerance)
+  dim(ret) <- c(nt, nc) # put to last step
+  return(ret)
 }

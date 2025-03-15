@@ -21,14 +21,14 @@
 #' @param K \link[base]{integer} scalar, number of components (e.g., must use `2L` instead of `2`).
 #' 
 #' @param probs \link[base]{numeric} \link[base]{vector}, percentiles at where the sample and theoretical quantiles are to be matched.
-#' See function [QLMDp] for details.
+#' See function [QLMDp()] for details.
 #' 
 #' @param init \link[base]{character} scalar for the method of initial values selection, 
 #' or an \linkS4class{fmx} object of the initial values. 
-#' See function [fmx_hybrid] for more details.
+#' See function [fmx_hybrid()] for more details.
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
-#' See function [fmx_constraint] for details.
+#' See function [fmx_constraint()] for details.
 #' 
 #' @param tol,maxiter see function \link[TukeyGH77]{vuniroot2}
 #' 
@@ -43,7 +43,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [QLMDe] returns an \linkS4class{fmx} object.
+#' Function [QLMDe()] returns an \linkS4class{fmx} object.
 #' 
 #' 
 #' 

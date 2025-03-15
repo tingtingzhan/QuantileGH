@@ -14,13 +14,13 @@
 #' @details ..
 #' 
 #' @note 
-#' Functions [drop1.fmx] and [add1.fmx] do *not* 
+#' Functions [drop1.fmx()] and [add1.fmx()] do *not* 
 #' return an \link[stats]{anova} table, like other
 #' `stats:::drop.*` or `stats:::add1.*` functions do.
 #' 
 #' @returns
 #' 
-#' Functions [drop1.fmx] and [add1.fmx] return a \link[base]{list} of \linkS4class{fmx} objects,
+#' Functions [drop1.fmx()] and [add1.fmx()] return a \link[base]{list} of \linkS4class{fmx} objects,
 #' in the reverse order of model selection.
 #' 
 #' @seealso 

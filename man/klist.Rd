@@ -20,7 +20,7 @@ trimmed \eqn{k}-means algorithm \link[tclust]{tkmeans}}
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \link{klist} returns a \link[base]{list} of \link[base]{numeric} \link[base]{vector}s.
+Function \code{\link[=klist]{klist()}} returns a \link[base]{list} of \link[base]{numeric} \link[base]{vector}s.
 }
 \description{
 To create a \link[base]{list} of observations based on (modified) \eqn{k}-means algorithm.

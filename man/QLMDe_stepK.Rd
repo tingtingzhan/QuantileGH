@@ -18,7 +18,7 @@ QLMDe_stepK(
 \item{x}{\link[base]{numeric} \link[base]{vector}, observations}
 
 \item{distname, data.name}{\link[base]{character} scalars,
-see parameters of the same names in function \link{QLMDe}}
+see parameters of the same names in function \code{\link[=QLMDe]{QLMDe()}}}
 
 \item{Kmax}{\link[base]{integer} scalar \eqn{K_\text{max}},
 maximum number of components to be considered. Default \code{3L}}
@@ -27,13 +27,13 @@ maximum number of components to be considered. Default \code{3L}}
 Akaike's information criterion \link[stats]{AIC}, or
 Bayesian information criterion \link[stats]{BIC} (default).}
 
-\item{direction}{\link[base]{character} scalar, direct of selection in function \link{step_fmx},
+\item{direction}{\link[base]{character} scalar, direct of selection in function \code{\link[=step_fmx]{step_fmx()}},
 either \code{'forward'} (default) or \code{'backward'}}
 
 \item{...}{additional parameters}
 }
 \value{
-Function \link{QLMDe_stepK} returns an object of S3 class \code{'stepK'},
+Function \code{\link[=QLMDe_stepK]{QLMDe_stepK()}} returns an object of S3 class \code{'stepK'},
 which is a \link[base]{list} of selected models (in reversed order) with attribute(s)
 \code{'direction'} and
 \code{'test'}.
@@ -44,10 +44,10 @@ To compare \eqn{gh}-parsimonious models of Tukey \eqn{g}-&-\eqn{h} mixtures with
 and select the optimal number of components.
 }
 \details{
-Function \link{QLMDe_stepK} compares the \eqn{gh}-parsimonious models with different number of components \eqn{K},
+Function \code{\link[=QLMDe_stepK]{QLMDe_stepK()}} compares the \eqn{gh}-parsimonious models with different number of components \eqn{K},
 and selects the optimal number of components using BIC (default) or AIC.
 
-The forward selection starts with finding the \eqn{gh}-parsimonious model (via function \link{step_fmx})
+The forward selection starts with finding the \eqn{gh}-parsimonious model (via function \code{\link[=step_fmx]{step_fmx()}})
 at \eqn{K = 1}.
 Let the current number of component be \eqn{K^c}.
 We compare the \eqn{gh}-parsimonious models of \eqn{K^c+1} and \eqn{K^c} component, respectively,

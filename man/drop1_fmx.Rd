@@ -16,7 +16,7 @@
 \item{...}{additional parameters, currently not in use.}
 }
 \value{
-Functions \link{drop1.fmx} and \link{add1.fmx} return a \link[base]{list} of \linkS4class{fmx} objects,
+Functions \code{\link[=drop1.fmx]{drop1.fmx()}} and \code{\link[=add1.fmx]{add1.fmx()}} return a \link[base]{list} of \linkS4class{fmx} objects,
 in the reverse order of model selection.
 }
 \description{
@@ -26,7 +26,7 @@ Fit \linkS4class{fmx} models with a single parameters being added or dropped.
 ..
 }
 \note{
-Functions \link{drop1.fmx} and \link{add1.fmx} do \emph{not}
+Functions \code{\link[=drop1.fmx]{drop1.fmx()}} and \code{\link[=add1.fmx]{add1.fmx()}} do \emph{not}
 return an \link[stats]{anova} table, like other
 \verb{stats:::drop.*} or \verb{stats:::add1.*} functions do.
 }

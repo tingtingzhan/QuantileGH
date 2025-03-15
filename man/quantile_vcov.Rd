@@ -14,7 +14,7 @@ cumulative probabilities at the given quantiles}
 probability densities at the given quantiles}
 }
 \value{
-Function \link{quantile_vcov} returns the variance-covariance \link[base]{matrix} of quantiles.
+Function \code{\link[=quantile_vcov]{quantile_vcov()}} returns the variance-covariance \link[base]{matrix} of quantiles.
 }
 \description{
 To compute the variance-covariance matrix of quantiles
@@ -23,7 +23,7 @@ based on Theorem 1 and 2 of Mosteller (1946).
 \details{
 The end user should make sure no density too close to 0 is included in argument \code{d}.
 
-Function \link{quantile_vcov} must not be used in a compute-intensive way.
+Function \code{\link[=quantile_vcov]{quantile_vcov()}} must not be used in a compute-intensive way.
 }
 \references{
 Frederick Mosteller. On Some Useful "Inefficient" Statistics (1946).

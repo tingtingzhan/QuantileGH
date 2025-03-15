@@ -14,7 +14,7 @@ mahalanobis_int(x, center, invcov)
 \item{invcov}{\link[base]{numeric} \link[base]{matrix}, \emph{inverted} variance-covariance \eqn{\mathbf{\Sigma}}}
 }
 \value{
-Function \link{mahalanobis_int} returns a \link[base]{numeric} scalar.
+Function \code{\link[=mahalanobis_int]{mahalanobis_int()}} returns a \link[base]{numeric} scalar.
 }
 \description{
 Simpler and faster \link[stats]{mahalanobis} distance.
