@@ -21,7 +21,7 @@ fmx_cluster(
 
 \item{constraint}{\link[base]{character} \link[base]{vector},
 parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.
-See function \code{\link[=fmx_constraint]{fmx_constraint()}} for details.}
+See function \link[fmx]{fmx_constraint} for details.}
 
 \item{...}{additional parameters, currently not in use}
 }

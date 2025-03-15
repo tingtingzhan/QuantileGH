@@ -52,6 +52,7 @@
 #' 
 #' @name drop1_fmx
 #' @keywords internal
+#' @importClassesFrom fmx fmx
 #' @importFrom fmx fmx_constraint
 #' @importFrom stats drop1
 #' @export drop1.fmx

@@ -27,7 +27,7 @@ QLMDe(
 \item{data.name}{\link[base]{character} scalar, name for the observations for user-friendly print out.}
 
 \item{constraint}{\link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.
-See function \code{\link[=fmx_constraint]{fmx_constraint()}} for details.}
+See function \link[fmx]{fmx_constraint} for details.}
 
 \item{probs}{\link[base]{numeric} \link[base]{vector}, percentiles at where the sample and theoretical quantiles are to be matched.
 See function \code{\link[=QLMDp]{QLMDp()}} for details.}

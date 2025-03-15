@@ -54,7 +54,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, 
 #' parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
-#' See function [fmx_constraint()] for details.
+#' See function \link[fmx]{fmx_constraint} for details.
 #' 
 #' @param ... additional parameters, currently not in use
 #' 
@@ -235,7 +235,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' and the normal mixture estimate by function [fmx_normix()], 
 #' and select the one either with maximum likelihood (\code{test = 'logLik'}, default), 
 #' with minimum Cramer-von Mises distance (\code{test = 'CvM'}) or 
-#' with minimum Kolmogorov distance ([Kolmogorov_fmx]).
+#' with minimum Kolmogorov distance (\link[fmx]{Kolmogorov_fmx}).
 #' 
 #' @returns 
 #' 
@@ -255,6 +255,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' fmx_normix(x2, K = 2L, distname = 'GH')
 #' fmx_hybrid(x2, distname = 'GH', K = 2L)
 #' 
+#' @importClassesFrom fmx fmx
 #' @importFrom fmx logLik.fmx CramerVonMises_fmx Kolmogorov_fmx
 #' @export
 fmx_hybrid <- function(x, test = c('logLik', 'CvM', 'KS'), ...) {

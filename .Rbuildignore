@@ -4,3 +4,4 @@ inst
 Icon\\?
 vignettes
 
+^CRAN-SUBMISSION$

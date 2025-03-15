@@ -42,6 +42,7 @@
 #' @seealso 
 #' \link[stats]{step}
 #' 
+#' @importClassesFrom fmx fmx
 #' @export
 step_fmx <- function(object, test = c('BIC', 'AIC'), direction = c('forward', 'backward'), ...) {
   if (!length(object@data)) return(invisible())

@@ -28,7 +28,7 @@
 #' See function [fmx_hybrid()] for more details.
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
-#' See function [fmx_constraint()] for details.
+#' See function \link[fmx]{fmx_constraint} for details.
 #' 
 #' @param tol,maxiter see function \link[TukeyGH77]{vuniroot2}
 #' 
@@ -53,6 +53,7 @@
 #' \donttest{QLMDe(x, distname = 'GH', K = 2L)}
 #' 
 #' @seealso [fmx_hybrid]
+#' @importClassesFrom fmx fmx
 #' @importFrom fmx distArgs
 #' @importFrom fmx Kolmogorov_fmx CramerVonMises_fmx KullbackLeibler_fmx
 #' @importFrom fmx approxdens fmx2dbl dbl2fmx pmlogis_first dfmx qfmx fmx_constraint user_constraint
