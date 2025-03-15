@@ -12,7 +12,7 @@ step_fmx(
 )
 }
 \arguments{
-\item{object}{\linkS4class{fmx} object}
+\item{object}{\link[fmx:fmx-class]{fmx} object}
 
 \item{test}{\link[base]{character} scalar, criterion to be used, either
 Akaike's information criterion \link[stats]{AIC}-like, or

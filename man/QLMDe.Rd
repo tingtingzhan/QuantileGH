@@ -33,7 +33,7 @@ See function \link[fmx]{fmx_constraint} for details.}
 See function \code{\link[=QLMDp]{QLMDp()}} for details.}
 
 \item{init}{\link[base]{character} scalar for the method of initial values selection,
-or an \linkS4class{fmx} object of the initial values.
+or an \link[fmx:fmx-class]{fmx} object of the initial values.
 See function \code{\link[=fmx_hybrid]{fmx_hybrid()}} for more details.}
 
 \item{tol, maxiter}{see function \link[TukeyGH77]{vuniroot2}}
@@ -41,7 +41,7 @@ See function \code{\link[=fmx_hybrid]{fmx_hybrid()}} for more details.}
 \item{...}{additional parameters of \link[stats]{optim}}
 }
 \value{
-Function \code{\link[=QLMDe]{QLMDe()}} returns an \linkS4class{fmx} object.
+Function \code{\link[=QLMDe]{QLMDe()}} returns an \link[fmx:fmx-class]{fmx} object.
 }
 \description{
 The quantile least Mahalanobis distance algorithm estimates the parameters of

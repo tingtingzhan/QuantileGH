@@ -24,7 +24,7 @@
 #' See function [QLMDp()] for details.
 #' 
 #' @param init \link[base]{character} scalar for the method of initial values selection, 
-#' or an \linkS4class{fmx} object of the initial values. 
+#' or an \link[fmx:fmx-class]{fmx} object of the initial values. 
 #' See function [fmx_hybrid()] for more details.
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
@@ -43,7 +43,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [QLMDe()] returns an \linkS4class{fmx} object.
+#' Function [QLMDe()] returns an \link[fmx:fmx-class]{fmx} object.
 #' 
 #' 
 #' 
@@ -253,7 +253,7 @@ QLMDe <- function(
   .meat <- quantile_vcov(p = p1, d = d1) # V_(\hat{theta})
   # in theary, we should use V_{true theta}, but no one knows true theta in practice
   # so I am using V_{\hat_theta}
-  # now I want to use V_{empirical} (`@quantile_vv` is no longer a slot of \linkS4class{fmx}), can I?
+  # now I want to use V_{empirical} (`@quantile_vv` is no longer a slot of \link[fmx:fmx-class]{fmx}), can I?
   q_gr <- qfmx_gr(probs = p1, distname = distname, K = K, pars = tmp$pars, w = tmp$w)
   if (!length(q_gr)) {
     int_vv <- array(NA_real_, dim = c(0L, 0L)) # exception handling

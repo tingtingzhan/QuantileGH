@@ -1,13 +1,13 @@
 
 
 
-#' @title Drop or Add One Parameter from \linkS4class{fmx} Object
+#' @title Drop or Add One Parameter from \link[fmx:fmx-class]{fmx} Object
 #' 
 #' @description 
 #' 
-#' Fit \linkS4class{fmx} models with a single parameters being added or dropped.
+#' Fit \link[fmx:fmx-class]{fmx} models with a single parameters being added or dropped.
 #' 
-#' @param object \linkS4class{fmx} object
+#' @param object \link[fmx:fmx-class]{fmx} object
 #' 
 #' @param ... additional parameters, currently not in use.
 #' 
@@ -20,7 +20,7 @@
 #' 
 #' @returns
 #' 
-#' Functions [drop1.fmx()] and [add1.fmx()] return a \link[base]{list} of \linkS4class{fmx} objects,
+#' Functions [drop1.fmx()] and [add1.fmx()] return a \link[base]{list} of \link[fmx:fmx-class]{fmx} objects,
 #' in the reverse order of model selection.
 #' 
 #' @seealso 

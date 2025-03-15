@@ -44,7 +44,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @description 
 #' 
-#' Naive estimates for finite mixture distribution \linkS4class{fmx} via clustering.
+#' Naive estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} via clustering.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -82,7 +82,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @returns 
 #' 
-#' Function [fmx_cluster()] returns an \linkS4class{fmx} object.
+#' Function [fmx_cluster()] returns an \link[fmx:fmx-class]{fmx} object.
 #' 
 #' @importFrom methods new
 #' @importFrom fmx user_constraint
@@ -133,7 +133,7 @@ fmx_cluster <- function(
 #' 
 #' @description 
 #' 
-#' Naive parameter estimates for finite mixture distribution \linkS4class{fmx} using mixture of normal distributions.
+#' Naive parameter estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} using mixture of normal distributions.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -158,7 +158,7 @@ fmx_cluster <- function(
 #' 
 #' @returns 
 #' 
-#' Function [fmx_normix()] returns an \linkS4class{fmx} object.
+#' Function [fmx_normix()] returns an \link[fmx:fmx-class]{fmx} object.
 #' 
 # @importFrom fmx sort.mixEM logLik.mixEM
 #' @importFrom methods new
@@ -219,7 +219,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' 
 #' @description 
 #' 
-#' Best estimates for finite mixture distribution \linkS4class{fmx}.
+#' Best estimates for finite mixture distribution \link[fmx:fmx-class]{fmx}.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -239,7 +239,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' 
 #' @returns 
 #' 
-#' Function [fmx_hybrid()] returns an \linkS4class{fmx} object.
+#' Function [fmx_hybrid()] returns an \link[fmx:fmx-class]{fmx} object.
 #' 
 #' @examples 
 #' library(fmx)

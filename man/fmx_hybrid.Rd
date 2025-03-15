@@ -15,10 +15,10 @@ See \strong{Details}.}
 \item{...}{additional parameters of functions \code{\link[=fmx_normix]{fmx_normix()}} and \code{\link[=fmx_cluster]{fmx_cluster()}}}
 }
 \value{
-Function \code{\link[=fmx_hybrid]{fmx_hybrid()}} returns an \linkS4class{fmx} object.
+Function \code{\link[=fmx_hybrid]{fmx_hybrid()}} returns an \link[fmx:fmx-class]{fmx} object.
 }
 \description{
-Best estimates for finite mixture distribution \linkS4class{fmx}.
+Best estimates for finite mixture distribution \link[fmx:fmx-class]{fmx}.
 }
 \details{
 Function \code{\link[=fmx_hybrid]{fmx_hybrid()}} compares
