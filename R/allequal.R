@@ -1,8 +1,4 @@
 
-##########################################
-# Modify tzhInternal/allequal.R
-##########################################
-
 
 #' @title Determine Nearly-Equal Elements
 #' 

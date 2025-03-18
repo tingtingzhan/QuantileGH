@@ -145,13 +145,13 @@ QLMDe <- function(
     switch(distname, norm = function(x) {
       q <- qnorm(probs, mean = x[1L], sd = exp(x[2L]), lower.tail = TRUE, log.p = FALSE)
       if (any(is.infinite(q))) stop('1-comp normal, infinite `q` should not be returned from any `probs` between 0 to 1, see `qnorm(.Machine$double.eps)`') # return(max_return)
-      return(mahalanobis_int(x = q, center = q_obs, invcov = qvv_inv))
+      return(mahalanobis_(x = q, center = q_obs, invcov = qvv_inv))
       
     }, GH = function(x) {
       if (has_constr) parRun[-id_constr] <- x else parRun <- x
       q <- qGH(probs, A = parRun[1L], B = exp(parRun[2L]), g = parRun[3L], h = exp(parRun[4L]), lower.tail = TRUE, log.p = FALSE)
       if (any(is.infinite(q))) return(max_return) # stop('interval problem again?') #
-      return(mahalanobis_int(x = q, center = q_obs, invcov = qvv_inv))
+      return(mahalanobis_(x = q, center = q_obs, invcov = qvv_inv))
       
     })
     
@@ -172,7 +172,7 @@ QLMDe <- function(
           c(t_w %*% pnorm(z))
         }, interval = interval)
         if (any(is.infinite(q))) return(max_return) # stop('interval problem again?') # 
-        return(mahalanobis_int(x = q, center = q_obs, invcov = qvv_inv))
+        return(mahalanobis_(x = q, center = q_obs, invcov = qvv_inv))
       }
       
     }, GH = {
@@ -198,7 +198,7 @@ QLMDe <- function(
         #  print(interval)
         #  stop('interval problem again?')
         #}
-        return(mahalanobis_int(x = q, center = q_obs, invcov = qvv_inv))
+        return(mahalanobis_(x = q, center = q_obs, invcov = qvv_inv))
       }
       
     })
