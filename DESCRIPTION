@@ -2,8 +2,8 @@ Package: QuantileGH
 Type: Package
 Title: Quantile Least Mahalanobis Distance Estimator for Tukey g-&-h
         Mixture
-Version: 0.1.8
-Date: 2025-03-15
+Version: 0.1.9
+Date: 2025-04-18
 Description: Functions for simulation, estimation, and model selection of
         finite mixtures of Tukey g-and-h distributions.
 License: GPL-2
