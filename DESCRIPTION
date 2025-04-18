@@ -12,7 +12,7 @@ Imports: methods, mixtools, tclust, fmx, TukeyGH77
 Encoding: UTF-8
 Authors@R: c(person(given = "Tingting", family = "Zhan", role =
        c('aut', 'cre'), email =
-       c("Tingting.Zhan@jefferson.edu"), comment = c(ORCID =
+       c("tingtingzhan@gmail.com"), comment = c(ORCID =
        '0000-0001-9971-4844')), person(given = "Inna", family =
        "Chervoneva", role = c('aut'), email =
        "Inna.Chervoneva@jefferson.edu", comment = c(ORCID =

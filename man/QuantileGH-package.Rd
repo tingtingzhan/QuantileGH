@@ -21,7 +21,7 @@ A backward-forward stepwise model selection algorithm is provided to find
 
 }
 \author{
-\strong{Maintainer}: Tingting Zhan \email{Tingting.Zhan@jefferson.edu} (\href{https://orcid.org/0000-0001-9971-4844}{ORCID})
+\strong{Maintainer}: Tingting Zhan \email{tingtingzhan@gmail.com} (\href{https://orcid.org/0000-0001-9971-4844}{ORCID})
 
 Authors:
 \itemize{
