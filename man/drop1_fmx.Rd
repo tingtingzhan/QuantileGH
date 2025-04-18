@@ -4,23 +4,23 @@
 \alias{drop1_fmx}
 \alias{drop1.fmx}
 \alias{add1.fmx}
-\title{Drop or Add One Parameter from \link[fmx:fmx-class]{fmx} Object}
+\title{Drop or Add One Parameter from \linkS4class{fmx} Object}
 \usage{
 \method{drop1}{fmx}(object, ...)
 
 \method{add1}{fmx}(object, ...)
 }
 \arguments{
-\item{object}{\link[fmx:fmx-class]{fmx} object}
+\item{object}{an \linkS4class{fmx} object}
 
 \item{...}{additional parameters, currently not in use.}
 }
 \value{
-Functions \code{\link[=drop1.fmx]{drop1.fmx()}} and \code{\link[=add1.fmx]{add1.fmx()}} return a \link[base]{list} of \link[fmx:fmx-class]{fmx} objects,
+Functions \code{\link[=drop1.fmx]{drop1.fmx()}} and \code{\link[=add1.fmx]{add1.fmx()}} return a \link[base]{list} of \linkS4class{fmx} objects,
 in the reverse order of model selection.
 }
 \description{
-Fit \link[fmx:fmx-class]{fmx} models with a single parameters being added or dropped.
+Fit \linkS4class{fmx} models with a single parameters being added or dropped.
 }
 \details{
 ..

@@ -24,8 +24,8 @@
 #' See function [QLMDp()] for details.
 #' 
 #' @param init \link[base]{character} scalar for the method of initial values selection, 
-#' or an \link[fmx:fmx-class]{fmx} object of the initial values. 
-#' See function [fmx_hybrid()] for more details.
+#' or an \linkS4class{fmx} object of the initial values. 
+# See function [fmx_hybrid()] for more details.
 #' 
 #' @param constraint \link[base]{character} \link[base]{vector}, parameters (\eqn{g} and/or \eqn{h} for Tukey \eqn{g}-&-\eqn{h} mixture) to be set at 0.  
 #' See function \link[fmx]{fmx_constraint} for details.
@@ -43,7 +43,7 @@
 #' 
 #' @returns 
 #' 
-#' Function [QLMDe()] returns an \link[fmx:fmx-class]{fmx} object.
+#' Function [QLMDe()] returns an \linkS4class{fmx} object.
 #' 
 #' 
 #' 
@@ -52,11 +52,11 @@
 #' hist(x <- bmi[[1L]])
 #' \donttest{QLMDe(x, distname = 'GH', K = 2L)}
 #' 
-#' @seealso [fmx_hybrid]
 #' @importClassesFrom fmx fmx
 #' @importFrom fmx distArgs
-#' @importFrom fmx Kolmogorov_fmx CramerVonMises_fmx KullbackLeibler_fmx
+# @importFrom fmx Kolmogorov_fmx CramerVonMises_fmx KullbackLeibler_fmx
 #' @importFrom fmx approxdens fmx2dbl dbl2fmx pmlogis_first dfmx qfmx fmx_constraint user_constraint
+#' @importClassesFrom fmx fmx
 #' @importFrom stats ecdf optim pnorm qnorm quantile
 #' @importFrom TukeyGH77 vuniroot2 qGH .GH2z
 #' @export
@@ -64,7 +64,8 @@ QLMDe <- function(
   x, distname = c('GH', 'norm', 'sn'), K, data.name = deparse1(substitute(x)),
   constraint = character(),
   probs = QLMDp(x = x),
-  init = c('logLik', 'letterValue', 'normix'),
+  #init = c('logLik', 'letterValue', 'normix'),
+  init = c('normix', 'logLik', 'letterValue'),
   tol = .Machine$double.eps^.25, maxiter = 1000,
   ...
 ) {
@@ -83,13 +84,10 @@ QLMDe <- function(
   probs <- sort.int(unique_allequal(probs))
   
   if (missing(init)) {
-    init <- switch(match.arg(init), logLik = {
-      fmx_hybrid(x, test = 'logLik', distname = distname, K = K, constraint = constraint)
-    }, letterValue = {
-      fmx_cluster(x, distname = distname, K = K, constraint = constraint)
-    }, normix = {
-      fmx_normix(x, distname = distname, K = K)
-    })
+    init <- switch(match.arg(init), 
+                   #logLik = fmx_hybrid(x, test = 'logLik', distname = distname, K = K, constraint = constraint), 
+                   letterValue = fmx_cluster(x, distname = distname, K = K, constraint = constraint), 
+                   normix = fmx_normix(x, distname = distname, K = K))
   }
   if (!inherits(init, what = 'fmx')) stop('`init` must be \'fmx\' object')
   if ((init@distname != distname) || (dim(init@pars)[1L] != K)) stop('`init` is not a ', distname, ' ', K, '-component fit.')
@@ -167,7 +165,7 @@ QLMDe <- function(
         t_w <- t.default(pmlogis_first(x[id_w]))
         sdinv <- 1 / exp(.pM[,2L])
         eff <- cumsum(c(.pM[1L,1L], exp(.pM[2:K,1L]))) * sdinv
-        q <- vuniroot2(y = probs, f = function(q) { # essentially [pfmx]
+        q <- vuniroot2(y = probs, f = \(q) { # essentially [pfmx]
           z <- tcrossprod(sdinv, q) - eff
           c(t_w %*% pnorm(z))
         }, interval = interval)
@@ -185,7 +183,7 @@ QLMDe <- function(
         h <- exp(.pM[,4L])
         sdinv <- 1 / exp(.pM[,2L])
         eff <- cumsum(c(.pM[1L,1L], exp(.pM[2:K,1L]))) * sdinv
-        q <- vuniroot2(y = probs, f = function(q) { # essentially [pfmx]
+        q <- vuniroot2(y = probs, f = \(q) { # essentially [pfmx]
           z <- q0 <- tcrossprod(sdinv, q) - eff
           for (i in Kseq) z[i,] <- .GH2z(q0 = q0[i,], g = g[i], h = h[i], tol = tol, maxiter = maxiter)
           c(t_w %*% pnorm(z))
@@ -253,7 +251,7 @@ QLMDe <- function(
   .meat <- quantile_vcov(p = p1, d = d1) # V_(\hat{theta})
   # in theary, we should use V_{true theta}, but no one knows true theta in practice
   # so I am using V_{\hat_theta}
-  # now I want to use V_{empirical} (`@quantile_vv` is no longer a slot of \link[fmx:fmx-class]{fmx}), can I?
+  # now I want to use V_{empirical} (`@quantile_vv` is no longer a slot of \linkS4class{fmx}), can I?
   q_gr <- qfmx_gr(probs = p1, distname = distname, K = K, pars = tmp$pars, w = tmp$w)
   if (!length(q_gr)) {
     int_vv <- array(NA_real_, dim = c(0L, 0L)) # exception handling
@@ -283,9 +281,10 @@ QLMDe <- function(
     # optim = y
   )
   
-  ret@Kolmogorov <- Kolmogorov_fmx(object = ret)
-  ret@CramerVonMises <- CramerVonMises_fmx(object = ret)
-  ret@KullbackLeibler <- KullbackLeibler_fmx(object = ret)
+  # use ?methods::initialize on \linkS4class{fmx}
+  #ret@Kolmogorov <- Kolmogorov_fmx(object = ret)
+  #ret@CramerVonMises <- CramerVonMises_fmx(object = ret)
+  #ret@KullbackLeibler <- KullbackLeibler_fmx(object = ret)
   
   attr(ret, which = 'probs') <- probs # needed in [drop1.fmx] and [add1.fmx]
   

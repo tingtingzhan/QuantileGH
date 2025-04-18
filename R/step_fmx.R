@@ -7,7 +7,7 @@
 #' i.e., with some \eqn{g} and/or \eqn{h} parameters equal to zero,
 #' conditionally on a fixed number of components \eqn{K}.
 #' 
-#' @param object \link[fmx:fmx-class]{fmx} object
+#' @param object \linkS4class{fmx} object
 #' 
 #' @param test \link[base]{character} scalar, criterion to be used, either 
 #' Akaike's information criterion \link[stats]{AIC}-like, or 

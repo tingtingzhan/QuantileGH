@@ -26,10 +26,10 @@ See function \link[fmx]{fmx_constraint} for details.}
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \code{\link[=fmx_cluster]{fmx_cluster()}} returns an \link[fmx:fmx-class]{fmx} object.
+Function \code{\link[=fmx_cluster]{fmx_cluster()}} returns an \linkS4class{fmx} object.
 }
 \description{
-Naive estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} via clustering.
+Naive estimates for finite mixture distribution \linkS4class{fmx} via clustering.
 }
 \details{
 First of all, if the specified number of components \eqn{K\geq 2},

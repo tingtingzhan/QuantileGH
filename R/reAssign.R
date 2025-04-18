@@ -60,14 +60,14 @@ reAssign.tkmeans <- function(x, ...) {
   if ((d <- x$int$dim[2L]) == 1L) {
     obss <- split.default(obs, f = fclus)
     centers <- c(x$centers)
-    x_mad <- vapply(k_seq, FUN = function(i) mad(obss[[i]], center = centers[i]), FUN.VALUE = 0)
+    x_mad <- vapply(k_seq, FUN = \(i) mad(obss[[i]], center = centers[i]), FUN.VALUE = 0)
     tobs <- obs[tid, , drop = TRUE]
     tdist <- t.default(abs(tcrossprod(1/x_mad, tobs) - centers/x_mad)) # not compute intensive
   } else {
     clus_id <- split.default(seq_len(n), f = fclus)
     tobs_t <- t.default(obs[tid, , drop = FALSE]) # trimmed obs
     t_seq <- seq_len(dim(tobs_t)[2L])
-    tdist <- do.call(cbind, args = lapply(k_seq, FUN = function(i) {
+    tdist <- do.call(cbind, args = lapply(k_seq, FUN = \(i) {
       ivv <- cov(obs[clus_id[[i]], , drop = FALSE])
       invcov <- chol2inv(chol.default(ivv))
       tobs_i <- tobs_t - x$centers[,i]

@@ -11,7 +11,7 @@ QLMDe(
   data.name = deparse1(substitute(x)),
   constraint = character(),
   probs = QLMDp(x = x),
-  init = c("logLik", "letterValue", "normix"),
+  init = c("normix", "logLik", "letterValue"),
   tol = .Machine$double.eps^0.25,
   maxiter = 1000,
   ...
@@ -33,15 +33,14 @@ See function \link[fmx]{fmx_constraint} for details.}
 See function \code{\link[=QLMDp]{QLMDp()}} for details.}
 
 \item{init}{\link[base]{character} scalar for the method of initial values selection,
-or an \link[fmx:fmx-class]{fmx} object of the initial values.
-See function \code{\link[=fmx_hybrid]{fmx_hybrid()}} for more details.}
+or an \linkS4class{fmx} object of the initial values.}
 
 \item{tol, maxiter}{see function \link[TukeyGH77]{vuniroot2}}
 
 \item{...}{additional parameters of \link[stats]{optim}}
 }
 \value{
-Function \code{\link[=QLMDe]{QLMDe()}} returns an \link[fmx:fmx-class]{fmx} object.
+Function \code{\link[=QLMDe]{QLMDe()}} returns an \linkS4class{fmx} object.
 }
 \description{
 The quantile least Mahalanobis distance algorithm estimates the parameters of
@@ -63,7 +62,4 @@ data(bmi, package = 'mixsmsn')
 hist(x <- bmi[[1L]])
 \donttest{QLMDe(x, distname = 'GH', K = 2L)}
 
-}
-\seealso{
-\link{fmx_hybrid}
 }

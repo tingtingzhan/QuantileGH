@@ -22,14 +22,14 @@ trimmed \eqn{k}-means algorithm \link[tclust]{tkmeans}}
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \code{\link[=fmx_normix]{fmx_normix()}} returns an \link[fmx:fmx-class]{fmx} object.
+Function \code{\link[=fmx_normix]{fmx_normix()}} returns an \linkS4class{fmx} object.
 }
 \description{
-Naive parameter estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} using mixture of normal distributions.
+Naive parameter estimates for finite mixture distribution \linkS4class{fmx} using mixture of normal distributions.
 }
 \details{
-\link{fmx_normix} ... the cluster centers are provided as the starting values of \eqn{\mu}'s for
-the univariate normal mixture by EM \link[mixtools:normalmixEM]{algorithm}.
+Function \code{\link[=fmx_normix]{fmx_normix()}} ... the cluster centers are provided as the starting values of \eqn{\mu}'s for
+the univariate normal mixture by EM algorithm \link[mixtools]{normalmixEM}.
 \code{R} replicates of normal mixture estimates are obtained, and
 the one with maximum likelihood will be selected
 }

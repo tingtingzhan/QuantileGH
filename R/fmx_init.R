@@ -44,7 +44,7 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @description 
 #' 
-#' Naive estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} via clustering.
+#' Naive estimates for finite mixture distribution \linkS4class{fmx} via clustering.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -82,10 +82,11 @@ klist <- function(x, K, method = c('reassign_tkmeans'), alpha = .05, ...) {
 #' 
 #' @returns 
 #' 
-#' Function [fmx_cluster()] returns an \link[fmx:fmx-class]{fmx} object.
+#' Function [fmx_cluster()] returns an \linkS4class{fmx} object.
 #' 
 #' @importFrom methods new
 #' @importFrom fmx user_constraint
+#' @importClassesFrom fmx fmx
 #' @importFrom stats mad
 #' @importFrom TukeyGH77 letterValue
 #' @export
@@ -98,7 +99,7 @@ fmx_cluster <- function(
   xs <- klist(x = x, K = K, ...)
   
   dargs <- switch(distname <- match.arg(distname), norm = {
-    lapply(xs, FUN = function(i) {
+    lapply(xs, FUN = \(i) {
       c(mean = median.default(i), sd = mad(i))
     })
   }, GH = {
@@ -111,7 +112,7 @@ fmx_cluster <- function(
              letterValue(xs[[2L]], halfSpread = 'upper'))
       } else lapply(xs, FUN = letterValue)
     } else {
-      lapply(seq_len(K), FUN = function(i) {
+      lapply(seq_len(K), FUN = \(i) {
         ag <- list(g_ = if (i %in% gid) FALSE, h_ = if (i %in% hid) FALSE)
         do.call(letterValue, args = c(list(x = xs[[i]]), ag[lengths(ag, use.names = FALSE) > 0L]))
       })
@@ -133,7 +134,7 @@ fmx_cluster <- function(
 #' 
 #' @description 
 #' 
-#' Naive parameter estimates for finite mixture distribution \link[fmx:fmx-class]{fmx} using mixture of normal distributions.
+#' Naive parameter estimates for finite mixture distribution \linkS4class{fmx} using mixture of normal distributions.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -151,16 +152,17 @@ fmx_cluster <- function(
 #' 
 #' @details
 #' 
-#' [fmx_normix] ... the cluster centers are provided as the starting values of \eqn{\mu}'s for 
-#' the univariate normal mixture by EM \link[mixtools:normalmixEM]{algorithm}.
+#' Function [fmx_normix()] ... the cluster centers are provided as the starting values of \eqn{\mu}'s for 
+#' the univariate normal mixture by EM algorithm \link[mixtools]{normalmixEM}.
 #' `R` replicates of normal mixture estimates are obtained, and 
 #' the one with maximum likelihood will be selected
 #' 
 #' @returns 
 #' 
-#' Function [fmx_normix()] returns an \link[fmx:fmx-class]{fmx} object.
+#' Function [fmx_normix()] returns an \linkS4class{fmx} object.
 #' 
 # @importFrom fmx sort.mixEM logLik.mixEM
+#' @importClassesFrom fmx fmx
 #' @importFrom methods new
 #' @importFrom mixtools normalmixEM
 #' @importFrom stats mad median.default logLik
@@ -196,16 +198,26 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
     tmp
   }, simplify = FALSE)
   
-  #tmp <- sort.mixEM(rets[[which.max(vapply(rets, FUN = logLik.mixEM, FUN.VALUE = 0, USE.NAMES = FALSE))]])
-  tmp <- sort(rets[[which.max(vapply(rets, FUN = logLik, FUN.VALUE = 0, USE.NAMES = FALSE))]])
+  # do not want to import ?mixtools.tzh::logLik.mixEM
+  id <- rets |> 
+    vapply(FUN = `[[`, 'loglik', FUN.VALUE = NA_real_) |>
+    which.max()
+  tmp <- rets[[id]]
+  # do not want to import ?mixtools.tzh::sort.mixEM
+  o <- order(tmp$mu, decreasing = FALSE)
   
-  return(new(Class = 'fmx', distname = distname, w = tmp$lambda, pars = switch(distname, norm = cbind(
-    mean = tmp$mu, sd = tmp$sigma
-  ), GH = cbind(
-    A = tmp$mu, B = tmp$sigma, g = 0, h = 0
-  ), sn = cbind(
-    xi = tmp$mu, omega = tmp$sigma, alpha = 0 # I dont understand `tau`
-  ))))
+  return(new(
+    Class = 'fmx', 
+    distname = distname, 
+    w = tmp$lambda[o], 
+    pars = switch(distname, norm = cbind(
+      mean = tmp$mu[o], sd = tmp$sigma[o]
+    ), GH = cbind(
+      A = tmp$mu[o], B = tmp$sigma[o], g = 0, h = 0
+    ), sn = cbind(
+      xi = tmp$mu[o], omega = tmp$sigma[o], alpha = 0 # I dont understand `tau`
+    ))
+  ))
   
 }
 
@@ -219,7 +231,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' 
 #' @description 
 #' 
-#' Best estimates for finite mixture distribution \link[fmx:fmx-class]{fmx}.
+#' Best estimates for finite mixture distribution \linkS4class{fmx}.
 #' 
 #' @param x \link[base]{numeric} \link[base]{vector}, observations
 #' 
@@ -239,7 +251,7 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' 
 #' @returns 
 #' 
-#' Function [fmx_hybrid()] returns an \link[fmx:fmx-class]{fmx} object.
+#' Function [fmx_hybrid()] returns an \linkS4class{fmx} object.
 #' 
 #' @examples 
 #' library(fmx)
@@ -253,10 +265,10 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' fmx_cluster(x2, K = 2L)
 #' fmx_cluster(x2, K = 2L, constraint = c('g1', 'h2'))
 #' fmx_normix(x2, K = 2L, distname = 'GH')
-#' fmx_hybrid(x2, distname = 'GH', K = 2L)
+#' #fmx_hybrid(x2, distname = 'GH', K = 2L)
 #' 
 #' @importClassesFrom fmx fmx
-#' @importFrom fmx logLik.fmx CramerVonMises_fmx Kolmogorov_fmx
+# @importFrom fmx logLik.fmx CramerVonMises_fmx Kolmogorov_fmx
 #' @export
 fmx_hybrid <- function(x, test = c('logLik', 'CvM', 'KS'), ...) {
   
@@ -267,23 +279,17 @@ fmx_hybrid <- function(x, test = c('logLik', 'CvM', 'KS'), ...) {
     normix = fmx_normix(x, ...)
   )
 
-  stats <- list(
-    logLik = - vapply(ys, FUN = logLik.fmx, data = x, FUN.VALUE = NA_real_),
-    CvM = vapply(ys, FUN = function(i) CramerVonMises_fmx(i, data = x), FUN.VALUE = NA_real_),
-    Kolmogorov = vapply(ys, FUN = function(i) Kolmogorov_fmx(i, data = x), FUN.VALUE = NA_real_)
-  )
-  if (anyNA(stats, recursive = TRUE)) stop('should not happen')
+  #stats <- list(
+  #  logLik = - vapply(ys, FUN = logLik.fmx, data = x, FUN.VALUE = NA_real_),
+  #  CvM = vapply(ys, FUN = \(i) CramerVonMises_fmx(i, data = x), FUN.VALUE = NA_real_),
+  #  Kolmogorov = vapply(ys, FUN = \(i) Kolmogorov_fmx(i, data = x), FUN.VALUE = NA_real_)
+  #)
+  #if (anyNA(stats, recursive = TRUE)) stop('should not happen')
   
-  chosen <- vapply(stats, FUN = function(i) names(which.min(i)), FUN.VALUE = '')
+  #chosen <- vapply(stats, FUN = \(i) names(which.min(i)), FUN.VALUE = '')
   
-  ret <- ys[[chosen[test]]]
-  if (TRUE) { # for developer
-    #attr(ret, 'ys') <- ys
-    #attr(ret, 'x') <- x
-    #attr(ret, 'fig') <- .Defunct('autoplot.fmxS')
-    #attr(ret, 'chosen') <- chosen
-  }
-  return(ret)
+  #ret <- ys[[chosen[test]]]
+  #return(ret)
 }
 
 

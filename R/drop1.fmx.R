@@ -1,13 +1,13 @@
 
 
 
-#' @title Drop or Add One Parameter from \link[fmx:fmx-class]{fmx} Object
+#' @title Drop or Add One Parameter from \linkS4class{fmx} Object
 #' 
 #' @description 
 #' 
-#' Fit \link[fmx:fmx-class]{fmx} models with a single parameters being added or dropped.
+#' Fit \linkS4class{fmx} models with a single parameters being added or dropped.
 #' 
-#' @param object \link[fmx:fmx-class]{fmx} object
+#' @param object an \linkS4class{fmx} object
 #' 
 #' @param ... additional parameters, currently not in use.
 #' 
@@ -20,7 +20,7 @@
 #' 
 #' @returns
 #' 
-#' Functions [drop1.fmx()] and [add1.fmx()] return a \link[base]{list} of \link[fmx:fmx-class]{fmx} objects,
+#' Functions [drop1.fmx()] and [add1.fmx()] return a \link[base]{list} of \linkS4class{fmx} objects,
 #' in the reverse order of model selection.
 #' 
 #' @seealso 
@@ -71,7 +71,7 @@ drop1.fmx <- function(object, ...) {
   }, character()), y = constr_)
   if (!length(candpar)) return(invisible()) # exception handling
   
-  mods0 <- lapply(candpar, FUN = function(i) {
+  mods0 <- lapply(candpar, FUN = \(i) {
     i <- c(constr_, i)
     message(paste0(object@distname, K), ' ', paste(c(i, '0'), collapse = '='), ' .. ', appendLF = FALSE)
     ret <- QLMDe(object@data, data.name = object@data.name, distname = object@distname, K = K, probs = probs, constraint = i)
@@ -102,7 +102,7 @@ add1.fmx <- function(object, ...) {
   constr_ <- attr(fmx_constraint(object), which = 'user', exact = TRUE)
   if (!length(constr_)) return(invisible()) # exception handling
   
-  mods0 <- lapply(seq_along(constr_), FUN = function(i) {
+  mods0 <- lapply(seq_along(constr_), FUN = \(i) {
     i <- constr_[-i] # remove one constraint parameter
     message(paste0(object@distname, K), ' ', if (length(i)) paste(c(i, '0'), collapse = '='), ' .. ', appendLF = FALSE)
     ret <- QLMDe(object@data, data.name = object@data.name, distname = object@distname, K = K, probs = probs, constraint = i)
