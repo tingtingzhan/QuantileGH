@@ -247,7 +247,8 @@ fmx_normix <- function(x, K, distname = c('norm', 'GH', 'sn'), alpha = .05, R = 
 #' and the normal mixture estimate by function [fmx_normix()], 
 #' and select the one either with maximum likelihood (\code{test = 'logLik'}, default), 
 #' with minimum Cramer-von Mises distance (\code{test = 'CvM'}) or 
-#' with minimum Kolmogorov distance (\link[fmx]{Kolmogorov_fmx}).
+#' with minimum Kolmogorov distance.
+# (\link[fmx]{Kolmogorov_fmx}).
 #' 
 #' @returns 
 #' 
